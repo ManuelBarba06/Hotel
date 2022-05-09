@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.description {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.description h2{
+    text-decoration: underline var(--primary);
+}
+
+.description p{
+    text-align:justify;
+}

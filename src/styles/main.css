@@ -1,0 +1,4 @@
+.image {
+    height: calc(100vh - 155px);
+    overflow: hidden;
+}

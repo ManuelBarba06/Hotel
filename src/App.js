@@ -3,16 +3,23 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Main from './components/main/Main';
 import Login from './components/auth/Login';
 import Singup from './components/auth/Singup';
+import {Provider as RoomTypeProvider} from './context/RoomTypeController';
+import Reservation from './components/Reservation/Reservation';
+import Room from './components/Rooms/Room';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route exact path='/' element={<Main/>}/>
-        <Route exact path='/login' element={<Login/>}/>
-        <Route exact path='/signup' element={<Singup/>}/>
-      </Routes>
-    </Router>
+    <RoomTypeProvider>
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<Main/>}/>
+          <Route exact path='/login' element={<Login/>}/>
+          <Route exact path='/signup' element={<Singup/>}/>
+          <Route exact path='/reservation' element={<Reservation/>}/>
+          <Route exact path='/room/:id' element={<Room/>}/>
+        </Routes>
+      </Router>
+    </RoomTypeProvider>
   );
 }
 

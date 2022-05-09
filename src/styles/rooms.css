@@ -1,0 +1,91 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+.container h2{
+    text-decoration: underline var(--primary);
+    text-align: center;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+}
+
+/** Carousel **/
+.containerCarousel {
+    width: 800px;
+    height: 600px;
+}
+
+.containerCard {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 100%;
+    align-items: center;
+}
+
+.divCard {
+    width: 100%;
+    height: 50%;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.divCard p {
+    font-size: 13px;
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.divCard h5{
+    margin: 0;
+    margin-top: 5px;
+}
+.divCard h6{
+    margin: 0;
+    margin-top: 5px;
+}
+
+.divImage {
+    width: 100%;
+}
+
+.divImage img{
+    border-radius: 10px;
+    max-width: 100%;
+    max-height: auto;
+    display: block;
+}
+
+/**Room**/
+.containerRoom{
+    margin-top: 10px;
+}
+
+/**Galery **/
+.containerImage{
+
+    border-radius: 10px;
+}
+
+.containerImage:hover{
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.principalImage{
+
+    border-radius: 10px;
+}
+
+.principalImage:hover{
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.5s;
+}

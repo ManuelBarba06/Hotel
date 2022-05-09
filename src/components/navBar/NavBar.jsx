@@ -23,11 +23,11 @@ const NavBar = () => {
 
   return (
     <StyledUl>
-        <li><Link>Detalle</Link></li>
-        <li><Link>Fotos</Link></li>
-        <li><Link>Habitaciones</Link></li>
-        <li><Link>Mapa</Link></li>
-        <li><Link>Servicios</Link></li>
+        <li><Link activeClass='active' to='description' spy={true} smooth={true} duration={500}>Detalle</Link></li>
+        <li><Link activeClass='active' to='pictures' spy={true} smooth={true} duration={500}>Fotos</Link></li>
+        <li><Link activeClass='active' to='rooms' spy={true} smooth={true} duration={500}>Habitaciones</Link></li>
+        <li><Link  activeClass='active' to='maps' spy={true} smooth={true} duration={500}>Mapa</Link></li>
+        <li><Link activeClass='active' to='services' spy={true} smooth={true} duration={500}>Servicios</Link></li>
     </StyledUl>
   )
 }
