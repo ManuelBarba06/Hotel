@@ -1,5 +1,5 @@
 import dataContext from "./dataContext";
-import server from '../config/axios';
+import serverAxios from '../config/serverAxios';
 
 const roomTypeReducer = (state, action) =>{
     switch(action.type){
@@ -15,7 +15,7 @@ const roomTypeReducer = (state, action) =>{
 
 const getRoomsType = dispatch => async() => {
     try{
-        const response = await server.get('/room-type');
+        const response = await serverAxios.get('/room-type');
         dispatch({type: "get_rooms", payload: response.data})
     }catch(error){
         console.log(error)
@@ -24,7 +24,7 @@ const getRoomsType = dispatch => async() => {
 
 const getRoom = dispatch => async({id}) => {
     try{
-        const response = await server.get(`/room-type/${id}`);
+        const response = await serverAxios.get(`/room-type/${id}`);
         dispatch({type: "get_room", payload: response.data})
     }catch(error){
         console.log(error)

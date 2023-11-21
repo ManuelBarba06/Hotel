@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import Layout from '../Layout'
 import axios from 'axios'
-import clientAxios from '../../config/axios'
+import serverAxios from '../../config/serverAxios'
 import NavBar from '../navBar/NavBar'
 import '../../styles/main.css'
 import Description from '../description/Description'
@@ -31,7 +31,7 @@ const Main = () => {
 
   const obtenerInformacion = async (token) => {
     try{
-      const response = await clientAxios.get("/customer/get",{
+      const response = await serverAxios.get("/customer/get",{
           headers: {
               'x-auth-token' : token
             }})
@@ -47,7 +47,7 @@ const Main = () => {
       <NavBar/>
       <div>
         <div className='image'>
-          <img src="https://wallpaperboat.com/wp-content/uploads/2019/11/hotel-01.jpg" alt='hotel-main'/>
+          <img src="https://images.squarespace-cdn.com/content/v1/57d2fd483e00be654dfeff17/1634748681495-LCFPC985CO0XW62QVAKD/Screen+Shot+2018-10-29+at+5.19.15+PM.png" alt='hotel-main'/>
         </div>
         <ReservationComp/>
       </div>

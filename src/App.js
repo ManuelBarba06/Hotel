@@ -6,8 +6,10 @@ import Singup from './components/auth/Singup';
 import {Provider as RoomTypeProvider} from './context/RoomTypeController';
 import Reservation from './components/Reservation/Reservation';
 import Room from './components/Rooms/Room';
+import { useEffect } from 'react';
 
 function App() {
+  
   return (
     <RoomTypeProvider>
       <Router>

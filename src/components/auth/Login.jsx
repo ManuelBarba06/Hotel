@@ -1,9 +1,13 @@
 import React,{useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
+import {TextField, Button, Stack, Alert} from '@mui/material'
+import { Formik } from 'formik';
 
+import serverAxios from '../../config/serverAxios'
 
+import roomSource from '../../assets/room.jpg'
 
+import './Login.css'
 
 const Login = () => {
     const navigation = useNavigate();
@@ -22,7 +26,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try{
-        const response = await axios.post("http://localhost:4000/customer/login",{email,password})
+        const response = await serverAxios.post("/user/signin",{email,password})
         setError('');
         navigation("/");
         localStorage.setItem('token-hotel',response.data.token);
@@ -35,28 +39,133 @@ const Login = () => {
   }
 
   return (
-    <div className='divBackground'>
+    <div className='divContainerLogin'>
         <div className='container-login'>
-            <p className='textoLogo'>Hotel <span className='textoLogoDer'>Posada Real</span></p>
-            <h3>Iniciar Sesion</h3>
-            <form className='form-login' onSubmit={handleLogin}>
-                <div className='divLogin'>
-                <label>Correo</label>
-                <input className='inputLogin' type="text" placeholder="Correo" onChange={(e) => setEmail(e.target.value)}/>
-                </div>
-                <div className='divLogin'>
-                <label>Contraseña</label>
-                <input className='inputLogin' type="password" onChange={(e) => setPassword(e.target.value)}/>
-                </div>
-                <input className='inputButton' type="submit" placeholder='Iniciar sesion' />
-            </form>
-            <a href='/signup' className='textReg'>
-                <label>Aun no tienes una cuenta? Registrar</label>
-            </a>
-            {error !== ''
+            <div className='form-login'>
+                <Formik
+                    initialValues={{email: '', password: ''}}
+                    validate={values => {
+                        const errors = {}
+                        if (!values.email) {
+                            errors.email = 'Requiere'
+                        } else if (
+                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                        ) {
+                            errors.email = 'Correo invalido'
+                        }
+                        
+                        if (values.password.length < 6) {
+                            errors.password = 'La contraseña deber tener 6 caracteres'
+                        }
+                        return errors
+                    }}
+                    onSubmit={async(values, {setSubmitting}) => {
+                        try{
+                            const response = await serverAxios.post("/user/signin",values)
+                            setError("")
+                            setSubmitting(false)
+                        }catch(error) {
+                            const {data} = error.response
+                            setError(data.data.msg)
+                        }
+                    }}
+                >
+                    {({
+                        values,
+                        errors,
+                        isSubmitting,
+                        handleChange,
+                        handleSubmit,
+                    })=> (
+                        <form onSubmit={handleSubmit}>
+                            <p className='textoLogo'>Bienvenido al Hotel</p>
+                            <span className='textoLogoDer'>Posada Real</span>
+                            <h3>Iniciar Sesión</h3>
+                            {
+                                error != "" ?
+                                <Stack sx={{ width: '100%' }} spacing={2}>
+                                    <Alert severity="error" variant='filled'
+                                        sx={{fontSize: 12}}
+                                    >
+                                        {error}
+                                    </Alert>
+                                </Stack>
+                                : null
+                            }
+                            <br/>
+                            <TextField
+                                error={errors.email != undefined}
+                                label="Correo"
+                                type='email'
+                                name='email'
+                                variant='filled'
+                                value={values.email}
+                                onChange={handleChange}
+                                className='inputLogin'
+                                inputProps={{
+                                    style: {fontSize: 15}
+                                }}
+                                InputLabelProps={{
+                                    style: {
+                                        fontSize: 15
+                                    }
+                                }}
+                                helperText={errors.email}
+                                FormHelperTextProps={{
+                                    style: {
+                                        fontSize: 15
+                                    }
+                                }}
+                            />
+                            <br/>
+                            <TextField
+                                error={errors.password != undefined}
+                                 label="Contraseña"
+                                 type='password'
+                                 name='password'
+                                 variant='filled'
+                                 value={values.password}
+                                 onChange={handleChange}
+                                 className='inputLogin'
+                                 inputProps={{
+                                     style: {fontSize: 15}
+                                 }}
+                                 InputLabelProps={{
+                                     style: {
+                                         fontSize: 15
+                                     }
+                                 }}
+                                 helperText={errors.password}
+                                 FormHelperTextProps={{
+                                    style: {
+                                        fontSize: 15
+                                    }
+                                }}
+                            />
+                            <br/>
+                            <Button 
+                                type='submit'
+                                variant='contained'
+                                disabled={isSubmitting}
+                                className='inputButtonLogin'
+                            >
+                                Iniciar sesíon
+                            </Button>
+                        </form>
+                    )}
+                </Formik>
+                <a href='/signup' className='textReg'>
+                    <label>Aun no tienes una cuenta? Registrar</label>
+                </a>
+            </div>
+            <img
+                src={roomSource}
+                className='imageRoom'
+            />
+            {/* {error !== ''
                 ?<label>{error}</label>
                 :null
-            }
+            } */}
         </div>
     </div>
   )
