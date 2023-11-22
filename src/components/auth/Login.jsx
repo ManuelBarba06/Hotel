@@ -8,6 +8,7 @@ import serverAxios from '../../config/serverAxios'
 import roomSource from '../../assets/room.jpg'
 
 import './Login.css'
+import ButtonAuth from '../ButtonAuth/ButtonAuth';
 
 const Login = () => {
     const navigation = useNavigate();
@@ -143,19 +144,14 @@ const Login = () => {
                                 }}
                             />
                             <br/>
-                            <Button 
-                                type='submit'
-                                variant='contained'
-                                disabled={isSubmitting}
-                                className='inputButtonLogin'
-                            >
-                                Iniciar sesíon
-                            </Button>
+                            <ButtonAuth title={"Iniciar sesión"} isSubmitting={isSubmitting}/>
                         </form>
                     )}
                 </Formik>
+                <br/>
                 <a href='/signup' className='textReg'>
-                    <label>Aun no tienes una cuenta? Registrar</label>
+                    <span>Aun no tienes una cuenta?</span>
+                    <span>Registrar</span>
                 </a>
             </div>
             <img

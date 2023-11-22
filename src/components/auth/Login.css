@@ -90,6 +90,14 @@ border-bottom-right-radius: 10px;
   }
   
   .textReg{
-    margin: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #BE0E0E;
+    text-decoration: none;
+  }
+  
+  .textReg:hover {
+    cursor: pointer;
   }
   
