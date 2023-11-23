@@ -14,13 +14,13 @@ const Maps = () => {
     <div className='container'>
         <div className='containerMap'>
         <h2>Mapa</h2>
-        <GoogleMapReact
+        {/* <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyB_NNiFPgP-2QtwtWa-GFTZ-xoSE336R4Q' }}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
-        >
+        > */}
 
-        </GoogleMapReact>
+        {/* </GoogleMapReact> */}
         </div>
     </div>
   )

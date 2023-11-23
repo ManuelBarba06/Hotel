@@ -1,0 +1,8 @@
+.MuiButton-root {
+    background-color: #BE0E0E;
+    font-size: 0.8vw;
+}
+
+.MuiButton-root:hover {
+    background-color: #BE0E0E;
+}
