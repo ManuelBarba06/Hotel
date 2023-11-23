@@ -1,11 +1,32 @@
 import React from 'react'
+import { TextField } from '@mui/material'
 
-const Input = ({nombre,tipo}) => {
+const Input = ({error,label,type,name,value,handleChange,errorText}) => {
   return (
-    <div className='inputContainer'>
-        <label>{nombre}</label>
-        <input type={tipo}/>
-    </div>
+    <TextField
+      error={error}
+      label={label}
+      type={type}
+      name={name}
+      variant='filled'
+      value={value}
+      onChange={handleChange}
+      className='inputLogin'
+      inputProps={{
+          style: {fontSize: 20}
+      }}
+      InputLabelProps={{
+          style: {
+              fontSize: 20
+          }
+      }}
+      helperText={errorText}
+      FormHelperTextProps={{
+          style: {
+              fontSize: 20
+          }
+      }}
+   />
   )
 }
 

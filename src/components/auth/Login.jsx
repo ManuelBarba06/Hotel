@@ -1,19 +1,18 @@
 import React,{useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
-import {TextField, Button, Stack, Alert} from '@mui/material'
+import {TextField, Stack, Alert} from '@mui/material'
 import { Formik } from 'formik';
+
+import ButtonAuth from '../ButtonAuth/ButtonAuth';
+import LayoutAuth from '../LayoutAuth/LayoutAuth';
 
 import serverAxios from '../../config/serverAxios'
 
-import roomSource from '../../assets/room.jpg'
-
 import './Login.css'
-import ButtonAuth from '../ButtonAuth/ButtonAuth';
 
 const Login = () => {
     const navigation = useNavigate();
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
+    
     const [error,setError] = useState('');
 
     useEffect(() => {
@@ -23,26 +22,9 @@ const Login = () => {
             navigation("/");
         }
     },[])
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try{
-        const response = await serverAxios.post("/user/signin",{email,password})
-        setError('');
-        navigation("/");
-        localStorage.setItem('token-hotel',response.data.token);
-    }catch(err){
-        if(err.message == 'Network Error'){
-            setError("Error in the conection");
-        }
-        setError(err.response.data.msg);
-    }
-  }
-
+    
   return (
-    <div className='divContainerLogin'>
-        <div className='container-login'>
-            <div className='form-login'>
+    <LayoutAuth>
                 <Formik
                     initialValues={{email: '', password: ''}}
                     validate={values => {
@@ -62,9 +44,11 @@ const Login = () => {
                     }}
                     onSubmit={async(values, {setSubmitting}) => {
                         try{
-                            const response = await serverAxios.post("/user/signin",values)
+                            const {data} = await serverAxios.post("/user/signin",values)
                             setError("")
                             setSubmitting(false)
+                            localStorage.setItem('token-hotel',data.data.token)
+                            navigation('/')
                         }catch(error) {
                             const {data} = error.response
                             setError(data.data.msg)
@@ -153,17 +137,11 @@ const Login = () => {
                     <span>Aun no tienes una cuenta?</span>
                     <span>Registrar</span>
                 </a>
-            </div>
-            <img
-                src={roomSource}
-                className='imageRoom'
-            />
             {/* {error !== ''
                 ?<label>{error}</label>
                 :null
             } */}
-        </div>
-    </div>
+    </LayoutAuth>
   )
 }
 

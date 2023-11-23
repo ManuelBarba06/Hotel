@@ -1,0 +1,21 @@
+.formRegister {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formRegister form {
+    width: 100%;
+}
+
+
+.divLine {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.divLine .MuiTextField-root {
+    margin-right: 10px;
+}
+

@@ -9,6 +9,10 @@ const ButtonAuth = ({title,isSubmitting}) => {
         type='submit'
         variant='contained'
         disabled={isSubmitting}
+        color='error'
+        sx={{
+          fontSize: "1vw"
+        }}
     >
         {title}
     </Button>
