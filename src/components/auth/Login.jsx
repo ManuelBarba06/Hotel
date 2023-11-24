@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useContext} from 'react'
 import { useNavigate } from 'react-router-dom';
 import {TextField, Stack, Alert} from '@mui/material'
 import { Formik } from 'formik';
@@ -8,20 +8,29 @@ import LayoutAuth from '../LayoutAuth/LayoutAuth';
 
 import serverAxios from '../../config/serverAxios'
 
+import {Context as AuthContext} from '../../context/authContext'
+
 import './Login.css'
 
 const Login = () => {
     const navigation = useNavigate();
     
     const [error,setError] = useState('');
+    const [execution,setExecution] = useState(false)
+    
+    const {state, getToken} = useContext(AuthContext)
 
     useEffect(() => {
         //Verificar el token
-        const token = localStorage.getItem('token-hotel');
-        if(token){
-            navigation("/");
+        if (!execution) {
+            getToken()
+            setExecution(true)
         }
-    },[])
+        if (state.token) {
+            navigation("/")
+            return () => {}
+        }
+    },[state])
     
   return (
     <LayoutAuth>
@@ -67,7 +76,7 @@ const Login = () => {
                             <span className='textoLogoDer'>Posada Real</span>
                             <h3>Iniciar Sesión</h3>
                             {
-                                error != "" ?
+                                error !== "" ?
                                 <Stack sx={{ width: '100%' }} spacing={2}>
                                     <Alert severity="error" variant='filled'
                                         sx={{fontSize: 12}}
@@ -79,7 +88,7 @@ const Login = () => {
                             }
                             <br/>
                             <TextField
-                                error={errors.email != undefined}
+                                error={errors.email !== undefined}
                                 label="Correo"
                                 type='email'
                                 name='email'
@@ -104,7 +113,7 @@ const Login = () => {
                             />
                             <br/>
                             <TextField
-                                error={errors.password != undefined}
+                                error={errors.password !== undefined}
                                  label="Contraseña"
                                  type='password'
                                  name='password'

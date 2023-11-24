@@ -43,7 +43,7 @@ const Main = () => {
   }
 
   return (
-    <Layout nombre={nombre} valido={valido}>
+    <Layout>
       <NavBar/>
       <div>
         <div className='image'>

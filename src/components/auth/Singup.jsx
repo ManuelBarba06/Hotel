@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Stack, Alert} from '@mui/material'
 import { Formik } from 'formik'
@@ -9,12 +9,29 @@ import ButtonAuth from '../ButtonAuth/ButtonAuth'
 
 import serverAxios from '../../config/serverAxios'
 
+import {Context as AuthContext} from '../../context/authContext'
+
 import './Signup.css'
 
 const Singup = () => {
   
   const [error, setError] = useState('')
+  const [execution,setExecution] = useState(false)
   const navigation = useNavigate();
+  
+  const {state, getToken} = useContext(AuthContext)
+
+    useEffect(() => {
+        //Verificar el token
+        if (!execution) {
+            getToken()
+            setExecution(true)
+        }
+        if (state.token) {
+            navigation("/")
+            return () => {}
+        }
+    },[state])
   
   return (
     <LayoutAuth>
@@ -117,7 +134,7 @@ const Singup = () => {
                     onSubmit={handleSubmit}
                   >
                     {
-                        error != "" ?
+                        error !== "" ?
                         <Stack sx={{ width: '100%' }} spacing={2}>
                             <Alert severity="error" variant='filled'
                                 sx={{fontSize: 12}}

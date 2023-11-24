@@ -8,16 +8,23 @@ const NavBar = () => {
       display: flex;
       list-style: none;
       justify-content: space-evenly;
-      height: 50px;
+      height: 80px;
+      width: 100%;
+      position: absolute;
+      margin: 0;
+      background-color: rgb(0,0,0,0.5);
       li {
         width: 300px;
         display: flex;
         align-items: center;
         justify-content: center;
+        color: white;
+        font-weight: 700;
       }
       li:hover{
         border-bottom: 5px solid #BE0E0E;
         transition-duration: 0.2s;
+        cursor: pointer;
       }
   `
 
