@@ -1,8 +1,18 @@
-import React, {useEffect, useState} from 'react'
-import Button from './common/Button'
+import React, {useContext, useEffect} from 'react'
 import styled from 'styled-components'
 
-const Header = ({nombre, valido}) => {
+import Button from './common/Button'
+
+import {Context as AuthContext} from '../../context/authContext'
+import Menu from './common/Menu'
+
+const Header = () => {
+  
+  const {state, getToken} = useContext(AuthContext)
+  
+  useEffect(() => {
+    getToken()
+  },[])
   
   const LogoStyled = styled.a`
     text-decoration: none;
@@ -12,7 +22,7 @@ const Header = ({nombre, valido}) => {
      display: flex;
      position: relative;
      height: 70px;
-     background-color: white;
+     background-color: #BE0E0E;
      box-shadow: rgba(0, 0, 0, 0.35) 0px 0.1px 5px;
   `
 
@@ -33,9 +43,9 @@ const Header = ({nombre, valido}) => {
                 <LogoStyled href='/'>
                     <h2 className='heading'>Hotel Posada Real</h2>
                 </LogoStyled>
-                {!valido
+                {!state.token
                   ?<Button nombre={"Iniciar Sesión"}/>
-                  :<h3>Bievenido {nombre}</h3>
+                  :<Menu/>
                 }
             </StyledBar>
     </StyledHeader>

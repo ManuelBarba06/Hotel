@@ -5,16 +5,18 @@ const Button = ({nombre}) => {
 
   const StyledA = styled.a`
     text-decoration: none;
-    color: #686868;
-    width: 150px;
-    height: 40px;
+    background-color: #FFFFFF;
+    color: #BE0E0E;
+    font-weight: 600;
+    width: 10vw;
+    height: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     &:hover{
       color: white;
-      background-color: #A8A7A7;
+      background-color: #8a0b0b;
       transition-duration: 0.5s;
       cursor: pointer;
     }

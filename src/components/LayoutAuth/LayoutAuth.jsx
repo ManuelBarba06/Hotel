@@ -14,6 +14,7 @@ const LayoutAuth = ({children}) => {
         <img
                 src={roomSource}
                 className='imageRoom'
+                alt='Image room'
             />
       </div>
     </div>
