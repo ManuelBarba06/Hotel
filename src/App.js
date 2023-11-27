@@ -7,22 +7,25 @@ import {Provider as RoomTypeProvider} from './context/RoomTypeController';
 import {Provider as AuthProvider} from './context/authContext';
 import Reservation from './components/Reservation/Reservation';
 import Room from './components/Rooms/Room';
-import { useEffect } from 'react';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 function App() {
   
   return (
     <AuthProvider>
       <RoomTypeProvider>
-        <Router>
-          <Routes>
-            <Route exact path='/' element={<Main/>}/>
-            <Route exact path='/login' element={<Login/>}/>
-            <Route exact path='/signup' element={<Singup/>}/>
-            <Route exact path='/reservation' element={<Reservation/>}/>
-            <Route exact path='/room/:id' element={<Room/>}/>
-          </Routes>
-        </Router>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <Router>
+            <Routes>
+              <Route exact path='/' element={<Main/>}/>
+              <Route exact path='/login' element={<Login/>}/>
+              <Route exact path='/signup' element={<Singup/>}/>
+              <Route exact path='/reservation' element={<Reservation/>}/>
+              <Route exact path='/room/:id' element={<Room/>}/>
+            </Routes>
+          </Router>
+        </LocalizationProvider>
       </RoomTypeProvider>
     </AuthProvider>
   );

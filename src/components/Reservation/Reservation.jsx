@@ -55,17 +55,10 @@ const Reservation = () => {
   return (
     <div className='containerScreen'>
       <Container disableGutters maxWidth={false} className='container'>
+          <h2>Reservación</h2>
           <Grid container spacing={1}>
-              <Grid item xs={12} md={7}>
-                <Carousel className='carousel' navButtonsAlwaysInvisible indicators={false}>
-                    <img src='https://images6.alphacoders.com/349/349835.jpg' alt='lobby'/>
-                    <img src='https://cdn.wallpapersafari.com/28/52/5x4pS7.jpg' alt='room'/>
-                    <img src='https://wallpapercave.com/wp/wp1846068.jpg' alt='beach'/>
-                </Carousel>
-              </Grid>
-              <Grid item xs={12} md={5} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <Grid item xs={12} md={5} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
                 <div className='form'>
-                    <h2>Reservación</h2>
                     <div>
                       <Container>
                         <Typography variant="h5" gutterBottom component="div">Datos del cuarto</Typography>

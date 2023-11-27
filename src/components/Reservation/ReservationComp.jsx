@@ -1,15 +1,13 @@
 import React, {useContext, useEffect} from 'react'
+import { Button, TextField, MenuItem, FormControl, InputLabel, Select, Grid} from '@mui/material';
+import {DatePicker} from '@mui/x-date-pickers/DatePicker'
 import { Link } from 'react-router-dom';
-import '../../styles/reservation.css'
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
-import { Context } from '../../context/RoomTypeController';
-import { Field, Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Button } from '@mui/material';
+import { Field, Formik, ErrorMessage } from 'formik';
+
+import { Context } from '../../context/RoomTypeController';
+
+import '../../styles/reservation.css'
 
 const ReservationComp = () => {
   const {state} = useContext(Context)
@@ -23,7 +21,7 @@ const ReservationComp = () => {
     initialValues={{
       checkIn: '',
       checkOut: '',
-      people: 0,
+      people: "",
       type: ''
     }}
     validationSchema={
@@ -47,75 +45,128 @@ const ReservationComp = () => {
         }
       ) => (
         <div className='containerReserv'>
-            <TextField
-                name='checkIn'
-                className='items'
-                id="date"
-                label="Check-in"
-                type="date"
-                sx={{ width: 220 }}
-                InputLabelProps={{
-                shrink: true
-                }}
-                onChange={handleChange}
-                
-            />
-            <TextField
-                id="date"
-                name='checkOut'
-                label="Check-out"
-                className='items'
-                type="date"
-                sx={{ width: 220 }}
-                InputLabelProps={{
-                shrink: true,
-                }}
-                onChange={handleChange}
-            />
-            <FormControl className='person'>
-            <InputLabel id="demo-simple-select-label">Personas</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              label="Age"
-              name='people'
-              value={values.people}
-              onChange={handleChange}
-            >
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl className='tiposCuartos'>
-            <InputLabel id="demo-simple-select-label">Tipos de cuartos</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              label="Age"
-              value={values.type}
-              name='type'
-              onChange={handleChange}
-            >
-              {state.type_rooms.map((room) => (
-                  <MenuItem key={room._id} value={room._id}>{room.name}</MenuItem>
-              ))
-              }
-            </Select>
-          </FormControl>
-          {!(dirty && isValid)
-              ?<Link  to="#" style={{width: '20%', height: "100%", textDecoration: 'none'}}>
-                  <Button className='button' disabled={!(dirty && isValid)}>
-                      Reservar
-                  </Button>
-                </Link>
-              :<Link  to="/reservation" state={{checkIn: values.checkIn, checkOut: values.checkOut, people: values.people, type: values.type}} style={{width: '20%', height: "100%", textDecoration: 'none'}}>
+            <span>Reservación</span>
+            <Grid container>
+              <form>
+                <Grid xs={6} md={3}>
+                  <DatePicker
+                    label="Check-in"
+                    onChange={() => {}}
+                    renderInput={(params) => <TextField 
+                      {...params} 
+                      fullWidth
+                      inputProps={{
+                        style: {fontSize: 15}
+                      }}
+                      InputLabelProps={{
+                          style: {
+                              fontSize: 15
+                          }
+                      }}
+                    />}
+                    value={null}
+                  />
+                </Grid>
+                <Grid md={3}>
+                  <DatePicker
+                    label="Check-out"
+                    onChange={() => {}}
+                    renderInput={(params) => <TextField 
+                      {...params} 
+                      fullWidth
+                      inputProps={{
+                          style: {fontSize: 15}
+                      }}
+                      InputLabelProps={{
+                          style: {
+                              fontSize: 15
+                          }
+                      }}
+                      />}
+                    value={null}
+                  />
+                </Grid>
+                <Grid md={2}>
+                  <FormControl
+                    sx={{width: "100%"}}
+                  >
+                  <InputLabel 
+                    id="demo-simple-select-label"
+                    sx={{
+                      fontSize: 15
+                    }}
+                  >
+                    Personas
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    label="Age"
+                    name='people'
+                    value={values.people}
+                    onChange={handleChange}
+                  >
+                    <MenuItem 
+                      value={1}
+                      sx={{fontSize: 15}}
+                    >
+                      1
+                    </MenuItem>
+                    <MenuItem 
+                      value={2}
+                      sx={{fontSize: 15}}
+                    >
+                      2
+                    </MenuItem>
+                    <MenuItem 
+                      value={3}
+                      sx={{fontSize: 15}}
+                    >
+                      3
+                    </MenuItem>
+                    <MenuItem 
+                      value={4}
+                      sx={{fontSize: 15}}
+                    >
+                      4
+                    </MenuItem>
+                  </Select>
+                  </FormControl>
+                </Grid>
+                <Grid md={2}>
+                  <FormControl 
+                    sx={{width: "100%"}}
+                  >
+                    <InputLabel 
+                      id="demo-simple-select-label"
+                      sx={{
+                        fontSize: 15
+                      }}
+                    >
+                      Tipos de cuartos
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      label="Age"
+                      value={values.type}
+                      name='type'
+                      onChange={handleChange}
+                    >
+                      {state.type_rooms.map((room) => (
+                          <MenuItem key={room._id} value={room._id}>{room.name}</MenuItem>
+                      ))
+                      }
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid md={2}>
                   <Button className='button' >
-                      Reservar
+                    Reservar
                   </Button>
-                </Link>
-          }
+                </Grid>
+              </form>
+            </Grid>
         </div>
       )}
     />

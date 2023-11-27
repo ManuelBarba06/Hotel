@@ -1,40 +1,42 @@
 .containerReserv{
     display: flex;
+    flex-direction: column;
     position: absolute;
     background-color: white;
     top: 225px;
-    left: 22vw;
-    width: 56vw;
-    height: 9vh;
+    left: 15vw;
+    width: 65vw;
+    height: 12vh;
     border-radius: 20px;
-    align-items: center;
     padding: 10px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0);
+}
+
+.containerReserv form {
+    display: flex;
     flex-direction: row;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width: 100%;
 }
 
-
-.containerReserv .person{
- width: 100px;
- margin-right: 5px;
+.containerReserv span {
+    font-size: 1.2vw;
+    font-weight: 600;
 }
 
-.containerReserv .tiposCuartos{
-    width: 150px;
-    margin-right: 5px;
-}
-
-.containerReserv .items{
-    margin-right: 5px;
+.MuiTextField-root {
+    font-size: 10vw;
 }
 
 .containerReserv .button {
-    width: 60px;
     background-color: var(--primary);
     color: white;
     height: 100%;
     width: 100%;
     font-size: 10px;
+}
+
+.containerReserv .button:hover {
+    background-color: var(--primary);
 }
 
 /** Screen **/

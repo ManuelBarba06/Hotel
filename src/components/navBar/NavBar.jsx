@@ -9,7 +9,7 @@ const NavBar = () => {
       list-style: none;
       justify-content: space-evenly;
       height: 80px;
-      width: 100%;
+      width: 90%;
       position: absolute;
       margin: 0;
       background-color: rgb(0,0,0,0.5);

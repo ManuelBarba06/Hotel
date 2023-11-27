@@ -1,4 +1,10 @@
-.image {
-    height: calc(100vh - 155px);
+.imageDiv {
+    width: 98.8vw;
+    background-size: cover;
+    height: calc(100vh - 70px);
     overflow: hidden;
+    background-image: url("../assets/Hotel.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
