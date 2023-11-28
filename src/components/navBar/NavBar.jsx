@@ -30,7 +30,7 @@ const NavBar = () => {
 
   return (
     <StyledUl>
-        <li><Link activeClass='active' to='description' spy={true} smooth={true} duration={500}>Detalle</Link></li>
+        <li><Link activeClass='active' to='description' spy={true} smooth={true} duration={500}>Nosotros</Link></li>
         <li><Link activeClass='active' to='pictures' spy={true} smooth={true} duration={500}>Fotos</Link></li>
         <li><Link activeClass='active' to='rooms' spy={true} smooth={true} duration={500}>Habitaciones</Link></li>
         <li><Link  activeClass='active' to='maps' spy={true} smooth={true} duration={500}>Mapa</Link></li>

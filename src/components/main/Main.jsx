@@ -15,13 +15,16 @@ import ReservationComp from '../Reservation/ReservationComp'
 import '../../styles/main.css'
 
 import { Context } from '../../context/RoomTypeController'
+import { useAbout } from '../../hooks/UseAbout'
 
 const Main = () => {
 
   const {getRoomsType} = useContext(Context);
+  const {about, isLoading} = useAbout()
 
   useEffect(() => {
     getRoomsType();
+    console.log(about)
   }, []);
 
   return (
@@ -32,7 +35,13 @@ const Main = () => {
         <ReservationComp/>
       </div>
       <Element name='description'>
-       <Description/>
+        {
+          isLoading == false 
+            ? <Description
+                about={about}
+              />
+            : null
+        }
       </Element>
       <Element name="pictures">
         <Pictures/>
