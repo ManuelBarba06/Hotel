@@ -22,11 +22,6 @@ const Main = () => {
   const {getRoomsType} = useContext(Context);
   const {about, isLoading} = useAbout()
 
-  useEffect(() => {
-    getRoomsType();
-    console.log(about)
-  }, []);
-
   return (
     <Layout>
       <NavBar/>
@@ -43,6 +38,15 @@ const Main = () => {
             : null
         }
       </Element>
+      <Element name='services'>
+        {
+          isLoading == false
+            ? <Services
+                serviceDescription={about.service_description}
+              />
+            : null
+        }
+      </Element>
       <Element name="pictures">
         <Pictures/>
       </Element>
@@ -51,9 +55,6 @@ const Main = () => {
       </Element>
       <Element name='maps'>
         <Maps/>
-      </Element>
-      <Element name='services'>
-        <Services/>
       </Element>
     </Layout>
   )
