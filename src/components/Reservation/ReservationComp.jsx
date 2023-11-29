@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Field, Formik, ErrorMessage } from 'formik';
 
-import { Context } from '../../context/RoomTypeController';
+import { Context } from '../../context/room_typeContext';
 
 import '../../styles/reservation.css'
 

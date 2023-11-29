@@ -1,58 +1,107 @@
-.container{
+.container-rooms{
     display: flex;
     justify-content: center;
+    margin-top: 10vh;
+    padding: 60px;
 }
-.container h2{
-    text-decoration: underline var(--primary);
-    text-align: center;
+
+.container-rooms h2{
+    font-size: larger;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.container-rooms h3{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2.5vw;
+    font-weight: 900;
+    word-spacing: 0.0001vw;
 }
 
 .items {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-/** Carousel **/
-.containerCarousel {
-    width: 800px;
-    height: 600px;
-}
+/** Card **/
 
 .containerCard {
     display: flex;
     flex-direction: column;
-    height: 400px;
-    width: 100%;
     align-items: center;
+    height: 70vh;
+    width: 100%;
+    border-radius: 10px;
 }
+
+.containerCard:hover {
+    cursor: pointer;
+    box-shadow: 12px 10px 5px 0px var(--primary);
+}
+
+.containerCard img {
+    width: 100%;
+    height: 70%;
+    border-radius: 10px;
+}
+
+.container-rooms .containerBook {
+    position: relative;
+    top: -50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.container-rooms .priceContainer {
+    background-color: var(--primary);
+    color: white;
+    padding: 20px;
+    font-size: 1vw;
+    font-weight: 600;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.container-rooms .buttonBooking {
+    background-color: var(--primary);
+    color: white;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 1vw;
+    border-left: 1px solid white;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.container-rooms .buttonBooking:hover {
+    cursor: pointer;
+}
+
+.container-rooms h5 {
+    font-size: 1.5vw;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
 
 .divCard {
     width: 100%;
     height: 50%;
-    padding: 10px;
+    padding: 20px;
     align-items: center;
     flex-direction: column;
     display: flex;
 }
 
 .divCard p {
-    font-size: 13px;
-    margin: 0;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
-.divCard h5{
-    margin: 0;
-    margin-top: 5px;
-}
-.divCard h6{
-    margin: 0;
-    margin-top: 5px;
-}
-
-.divImage {
-    width: 100%;
+    font-size: 0.9vw;
+    margin: 5px 0 10px 0;
+    font-weight:500;
+    color: var(--paragraph);
 }
 
 .divImage img{

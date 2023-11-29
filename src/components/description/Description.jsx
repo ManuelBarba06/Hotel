@@ -1,13 +1,34 @@
 import React from 'react'
+import {Grid, Box} from '@mui/material'
+
+import hotelSource from '../../assets/Hotel-full.jpg'
+
 import '../../styles/description.css'
 
-const Description = () => {
+const Description = ({about}) => {
   return (
     <div className='container'>
-        <div className='description'>
-            <h2>Descripcion</h2>
-            <p>El Hotel Posada Real de Chiapas se encuentra dentro de una enorme casa colonial que fue construida en el siglo XVIII y remodelada a principios del siglo XX bajo la dirección del arquitecto Carlos Z. Flores, quien dentro de otras importantes obras de la localidad, diseñó y construyó el actual palacio municipal. Su estructura interior conserva el estilo original de su construcción y su fachada de estilo neoclásico mantiene el diseño de la remodelación de los primeros años del siglo pasado.</p>
-        </div>
+      <Box sx={{flexGrow: 1}}>
+        <Grid container spacing={2}>
+            <Grid item xs={12} md={6}>
+              <img
+                src={hotelSource}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <div className='description'>
+                  <div className='titles'>
+                    <h2>Nosotros</h2>
+                    <h3>{about.title}</h3>
+                  </div>
+                  {about.description.map((description) => (
+                    <p>{description}</p>
+                  ))
+                  }
+              </div>
+            </Grid>
+        </Grid>
+      </Box>
     </div>
   )
 }
