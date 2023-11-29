@@ -26,8 +26,7 @@ const getRoomsType = dispatch => async() => {
 const getRoom = dispatch => async({id}) => {
     try{
         const response = await serverAxios.get(`/room-type/${id}`);
-        console.log(response)
-        //dispatch({type: "get_room", payload: response.data})
+        dispatch({type: "get_room", payload: response.data.data})
     }catch(error){
         console.log(error)
     }
