@@ -5,7 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Typography from '@mui/material/Typography';
 import '../../styles/reservation.css'
 
-import { Context } from '../../context/RoomTypeController';
+import { Context } from '../../context/room_typeContext';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { useLocation } from "react-router-dom";

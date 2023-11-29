@@ -14,7 +14,7 @@ import ReservationComp from '../Reservation/ReservationComp'
 
 import '../../styles/main.css'
 
-import { Context } from '../../context/RoomTypeController'
+import { Context } from '../../context/room_typeContext'
 import { useAbout } from '../../hooks/UseAbout'
 
 const Main = () => {
@@ -47,11 +47,11 @@ const Main = () => {
             : null
         }
       </Element>
-      <Element name="pictures">
-        <Pictures/>
-      </Element>
       <Element name='rooms'>
         <Rooms/>
+      </Element>
+      <Element name="pictures">
+        <Pictures/>
       </Element>
       <Element name='maps'>
         <Maps/>

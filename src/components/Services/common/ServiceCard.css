@@ -12,11 +12,6 @@
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.serviceCardContainer:hover {
-    height: 52vh;
-    width: 106%;
-}
-
 .serviceCardContainer h4 {
     font-size: 1.3vw;
     color: black;

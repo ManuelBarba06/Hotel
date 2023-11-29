@@ -2,7 +2,7 @@ import React,{useContext, useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import { Container,Grid,Modal} from '@mui/material';
 import Spinner from 'react-spinner-material';
-import { Context } from '../../context/RoomTypeController';
+import { Context } from '../../context/room_typeContext';
 import Layout from '../Layout';
 import '../../styles/rooms.css'
 import GalleryRoom from './GalleryRoom';
