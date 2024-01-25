@@ -4,6 +4,7 @@ import {DatePicker} from '@mui/x-date-pickers/DatePicker'
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Field, Formik, ErrorMessage } from 'formik';
+import { DemoItem } from '@mui/x-date-pickers/internals/demo';
 
 import { Context } from '../../context/room_typeContext';
 
@@ -49,42 +50,46 @@ const ReservationComp = () => {
             <Grid container>
               <form>
                 <Grid xs={6} md={3}>
-                  <DatePicker
-                    label="Check-in"
-                    onChange={() => {}}
-                    renderInput={(params) => <TextField 
-                      {...params} 
-                      fullWidth
-                      inputProps={{
-                        style: {fontSize: 15}
-                      }}
-                      InputLabelProps={{
-                          style: {
-                              fontSize: 15
-                          }
-                      }}
-                    />}
-                    value={null}
-                  />
+                  <DemoItem>
+                    <DatePicker
+                      label={"Entrada"}
+                      onChange={() => {}}
+                      renderInput={(params) => <TextField 
+                        {...params} 
+                        fullWidth
+                        inputProps={{
+                          style: {fontSize: 15}
+                        }}
+                        InputLabelProps={{
+                            style: {
+                                fontSize: 15
+                            }
+                        }}
+                      />}
+                      value={null}
+                    />
+                  </DemoItem>
                 </Grid>
                 <Grid md={3}>
-                  <DatePicker
-                    label="Check-out"
-                    onChange={() => {}}
-                    renderInput={(params) => <TextField 
-                      {...params} 
-                      fullWidth
-                      inputProps={{
-                          style: {fontSize: 15}
-                      }}
-                      InputLabelProps={{
-                          style: {
-                              fontSize: 15
-                          }
-                      }}
-                      />}
-                    value={null}
-                  />
+                  <DemoItem>
+                    <DatePicker
+                      label="Salida"
+                      onChange={() => {}}
+                      renderInput={(params) => <TextField 
+                        {...params} 
+                        fullWidth
+                        inputProps={{
+                            style: {fontSize: 15}
+                        }}
+                        InputLabelProps={{
+                            style: {
+                                fontSize: 15
+                            }
+                        }}
+                        />}
+                      value={null}
+                    />
+                  </DemoItem>
                 </Grid>
                 <Grid md={2}>
                   <FormControl
